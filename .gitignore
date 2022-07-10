@@ -1,2 +1,4 @@
 data
 .ipynb_checkpoints
+submission.csv
+best_model.hdf5
