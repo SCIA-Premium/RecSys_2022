@@ -9,43 +9,29 @@ The objective of the project is to improve a **recommendation system** with appl
 
 ## Dataset
 
-We had to choose two **datasets** within the following constraints :
-* several hundreds of lines
-* at least 6 attributes (columns), the first being a unique id, separated by commas
-* we may use some categorical (non quantitative) features.
-* some fields should be correlated
+For this challenge we had access to multiple datasets that gave us many information about the behaviour of the customers. 
 
-Obvously, we had to tweak the datasets in order to artificially make it possible to apply **analysis** and **visualization** techniques on them.
+There were 5 datasets :
+* `candidate_items.csv`: contains all the items available
+* `item_features.csv`: contains all the features of each item
+* `train_purchases.csv`: contains all the purchases that occurred at the end of a session.
+* `train_sessions.csv`: contains all the items viewed in a session for each
+session_id
+* `test_leaderboard_sessions`: contains the input sessions for the leader-board
 
+## Data pre-processing
 
-## Supervised learning
+After this analyse, we had to **pre-process** the data in order to use them in our recommendation system. The items used 73 category of features. Even if 73 category is not a lot, it is still a big number and we had to reduce the dimension of our data to apply ML algorithm later. 
 
-In a first part, we had to work on a dataset and perform **supervised learning** on it. We decided to work on mobile price **classification**, and try to find some relation between features of a mobile phone (RAM, number of cores, internal memory...) and its selling price. 
+We used a **truncated SVD** to reduce our items **sparse matrix** to 12 components. This matrix allowed us to find easily and faster the **embedding items** of each items. We had just to compare the value of their components in the matrix
 
-We found a dataset that instead of giving the actual price of each phone give a price range indicating how high the price is.
-
-We could perform different analysis ont this dataset and try to visualize our data.
+## Machine Learning
+For the machine learning part, we used two different models to generate our
+submission. The first one is a logistic regression and the second one is a simple
+RNN (Recursive Neural Network).
+When evaluating the models on a test dataset, the logistic regression gave us a
+decent accuracy score of 79,99% , whereas the RNN gave us a quite better score
+of 80,91%.
 
 <img src="https://github.com/Pypearl/PTML/blob/main/readme_images/supervised_vis.png" alt="Supervised_Visualization">
 
-We decided to test several algorithms with the **sklearn** and **xgboost** library.
-First, we split our data to obtain a train dataset and a test dataset, then we iterate on the **classifier** to fit them and test them. The scoring is here a `R2 score`, which is evaluated by **cross validation**.
-
-The results are the following :
-
-<img src="https://github.com/Pypearl/PTML/blob/main/readme_images/supervised_res.png" alt="Supervised_Visualization">
-
-## Unsupervised learning
-
-In this section, we decided to work on a dataset containing information about 167 **countries**, like the inflation, the net income by person and other **economical parameters**.
-
-After loading the data we checked that there were no missing and duplicated data. And we decided to visualize it with **seaborn** library.
-
-Our objectives in this unsupervised learning is to decide whether or not a country should receive a **Funding** for Development Aid.
-
-For this **machine learning** part, we decided to use the **K-Means** algorithm from the **sklearn** library. The objective was to apply a **clustering** technique on our data to classify them and to know which one of them should receive a Funding for Development Aid.
-
-We applied the algorithm on two datasets, the first one which was the result of a **PCA**, and the second one which was the result of a **MinMax Scaling**. The most optimized number of cluster is 3, we used the elbow method and the silouhette method from the sklearn library to find it.
-
-
-<img src="https://github.com/Pypearl/PTML/blob/main/readme_images/unsupervised_map.png" alt="Supervised_Visualization">
