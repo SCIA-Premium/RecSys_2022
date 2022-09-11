@@ -26,12 +26,13 @@ After this analyse, we had to **pre-process** the data in order to use them in o
 We used a **truncated SVD** to reduce our items **sparse matrix** to 12 components. This matrix allowed us to find easily and faster the **embedding items** of each items. We had just to compare the value of their components in the matrix
 
 ## Machine Learning
-For the machine learning part, we used two different models to generate our
-submission. The first one is a logistic regression and the second one is a simple
-RNN (Recursive Neural Network).
-When evaluating the models on a test dataset, the logistic regression gave us a
-decent accuracy score of 79,99% , whereas the RNN gave us a quite better score
-of 80,91%.
+
+For the **machine learning** part, we used two different models to generate our submission. The first one is a **logistic regression** and the second one is a simple **RNN** (Recursive Neural Network).
+
+When evaluating the models on a test dataset, the logistic regression gave us a decent **accuracy score** of 79,99% , whereas the RNN gave us a quite better score of 80,91%.
+
+To improve our results, we thought that removing some features could be a
+solution. So we decided to use only the **15 most used features category** and retry our experimentation. We got as result an accuracy of 80,00% with the logistic regression and 80,92% with the RNN. We concluded that it does not really improve the performance of our predictions, because it could be based on the sample used as data, that is generated randomly.
 
 <img src="https://github.com/Pypearl/PTML/blob/main/readme_images/supervised_vis.png" alt="Supervised_Visualization">
 
