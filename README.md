@@ -21,9 +21,15 @@ session_id
 
 ## Data pre-processing
 
-After this analyse, we had to **pre-process** the data in order to use them in our recommendation system. The items used 73 category of features. Even if 73 category is not a lot, it is still a big number and we had to reduce the dimension of our data to apply ML algorithm later. 
+After this analyse, we had to **pre-process** the data in order to use them in our recommendation system. The items used 73 category of features. Even if 73 category is not a lot, it is still a big number and we had to reduce the dimension of our data to apply ML algorithm later.
 
-We used a **truncated SVD** to reduce our items **sparse matrix** to 12 components. This matrix allowed us to find easily and faster the **embedding items** of each items. We had just to compare the value of their components in the matrix
+We also analized how the sessions are represented in the `train_sessions` dataset, here is one of the example plot that we could produce :
+
+<img src="https://github.com/Pypearl/SYMA/blob/main/range_plot.png" alt="Range plot">
+
+We used a **truncated SVD** to reduce our items **sparse matrix** to 12 components. This matrix allowed us to find easily and faster the **embedding items** of each items. We had just to compare the value of their components in the matrix.
+
+
 
 ## Machine Learning
 
@@ -34,5 +40,4 @@ When evaluating the models on a test dataset, the logistic regression gave us a 
 To improve our results, we thought that removing some features could be a
 solution. So we decided to use only the **15 most used features category** and retry our experimentation. We got as result an accuracy of 80,00% with the logistic regression and 80,92% with the RNN. We concluded that it does not really improve the performance of our predictions, because it could be based on the sample used as data, that is generated randomly.
 
-<img src="https://github.com/Pypearl/PTML/blob/main/readme_images/supervised_vis.png" alt="Supervised_Visualization">
 
